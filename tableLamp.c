@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #define ledPin 0    //GPIO 17
-#define buttonPIn 1 //GPIO 18
+#define buttonPin 1 //GPIO 18
 
 int ledState = LOW;         //Current state of the LED
 int buttonState = HIGH;     //Current state of the Button
@@ -38,7 +38,7 @@ int main(void) {
 
     // If the state of the button change lasts longer the time set
     // it means the button state is effective changed rather than a buffering
-    if (milis() - lastChangeTime > captureTime) {
+    if (millis() - lastChangeTime > captureTime) {
       // if button state is changed, update data
       if (reading != buttonState) {
         buttonState = reading;
