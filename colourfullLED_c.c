@@ -17,29 +17,31 @@
 
 void setupLedPin(void) {
   softPwmCreate(ledPinRed,   0, 100); //Create SoftPWM pin for red
-  softPwmCreate(ledPinGreen, 0, 100); //Create SoftPWM pin for green
   softPwmCreate(ledPinBlue,  0, 100); //Create SoftPWM pin for blue
 }
 
-void setLedColour(int red, int green, int blue) {
+void setLedColour(int red, int blue) {
   softPwmWrite(ledPinRed,   red); //Set the duty cycle
-  softPwmWrite(ledPinGreen, green); //Set the duty cycle
   softPwmWrite(ledPinBlue,  blue);
 }
 
 int main(void) {
-  int red, green, blue;
+  int red, blue;
   puts("Program starting. Press CTRL + C to quit");
 
   wiringPiSetup(); //Initialise wiringPi
   setupLedPin();
 
   while(1) {
-  	delay(300);
-	red = random() % 100;
-	green = random() % 100;
-	blue = random() % 100;
-  	setLedColour(red, green, blue);
+    if(red) {
+      red = 0;
+      blue = 100;
+    } else {
+      red = 100;
+      blue = 0;
+    }
+    setLedColour(red, blue);
+    delay(300);
   }
   return 0;
 }

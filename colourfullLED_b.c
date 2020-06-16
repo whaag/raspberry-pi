@@ -35,11 +35,31 @@ int main(void) {
   setupLedPin();
 
   while(1) {
-  	delay(300);
-	red = random() % 100;
-	green = random() % 100;
-	blue = random() % 100;
-  	setLedColour(red, green, blue);
+	for (int i = 100; i > -1; i--) {
+	  red = i;
+	  green = 100;
+	  blue = 100;
+	  setLedColour(red, green, blue);
+	  delay(50);
+	}
+	delay(1000);
+	for (int i = 100; i > -1; i--) {
+	  red = 100;
+	  green = i;
+	  blue = 100;
+	  setLedColour(red, green, blue);
+	  delay(50);
+	}
+	delay(1000);
+	for (int i = 100; i > -1; i--) {
+	  red = 100;
+	  green = 100;
+	  blue = i;
+	  setLedColour(red, green, blue);
+	  delay(50);
+	}
+	delay(1000);
+
   }
   return 0;
 }
